@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Infosys Brand Colors */
+  --primary: 207 90% 54%; /* Infosys Blue #007CC2 */
+  --primary-dark: 208 100% 31%; /* Darker Blue #00386E */
+  --primary-light: 199 100% 85%; /* Lighter Blue #C8E9FF */
+  --secondary: 27 100% 45%; /* Infosys Orange #E48400 */
+  --accent: 155 49% 45%; /* Infosys Green #2A9D8F */
+  --accent-dark: 164 76% 26%; /* Darker Green #056F64 */
+  --neutral-dark: 220 17% 17%; /* Dark Gray #252A33 */
+  --neutral: 210 17% 95%; /* Light Gray #F0F2F5 */
+
+  /* Chart Color Palette */
+  --chart-1: 207 90% 54%; /* Infosys Blue */
+  --chart-2: 27 100% 45%; /* Infosys Orange */
+  --chart-3: 155 49% 45%; /* Infosys Green */
+  --chart-4: 208 100% 31%; /* Darker Blue */
+  --chart-5: 164 76% 26%; /* Darker Green */
+
+  /* UI Component Colors (Light Mode) */
+  --background: 0 0% 100%; /* White */
+  --foreground: 220 17% 17%; /* Dark Gray */
+  --card: 0 0% 100%; /* White */
+  --card-foreground: 220 17% 17%; /* Dark Gray */
+  --muted: 210 40% 96.1%; /* Light Muted */
+  --muted-foreground: 215.4 16.3% 46.9%; /* Medium Gray */
+  --border: 214.3 31.8% 91.4%; /* Light Border */
+  --input: 214.3 31.8% 91.4%; /* Input Border */
+  --destructive: 0 84% 60%; /* Red */
+  --ring: 207 90% 54%; /* Focus Ring (Primary) */
+
+  /* Border Radius */
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* UI Component Colors (Dark Mode) */
+  --background: 220 17% 17%; /* Dark Gray #252A33 */
+  --foreground: 0 0% 100%; /* White */
+  --card: 220 17% 20%; /* Darker Card */
+  --card-foreground: 0 0% 100%; /* White */
+  --muted: 220 17% 25%; /* Dark Muted */
+  --muted-foreground: 215 20% 75%; /* Light Gray */
+  --border: 216 34% 25%; /* Dark Border */
+  --primary: 207 90% 64%; /* Brighter Blue for dark mode */
+  --secondary: 27 100% 55%; /* Brighter Orange for dark mode */
+  --accent: 155 49% 50%; /* Brighter Green for dark mode */
+}
+
+/* Custom Utility Classes */
+.gradient-text {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.infosys-shadow {
+  box-shadow: 0 10px 30px -5px rgba(0, 124, 194, 0.15);
+}
+
+.dark .infosys-shadow {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Glass Morphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-card {
+  background: rgba(37, 42, 51, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Animation Keyframes */
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+/* Hardware acceleration for smooth animations */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Glow effects for industry tiles */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+  }
+}
+
+.glow-active {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
