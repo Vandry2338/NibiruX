@@ -29,7 +29,6 @@ const navigationItems = [
       { id: "market-trends", name: "Market Trends", active: false },
       { id: "regulatory-requirements", name: "Regulatory Requirements", active: false },
       { id: "strategic-focus-areas", name: "Strategic Focus Areas", active: false },
-      { id: "interactive-discovery-canvas", name: "Interactive Discovery Canvas", active: false },
       { id: "pain-point-canvas", name: "Business Challenge Assessment", active: false },
       { id: "pain-point-summary", name: "Challenge Analysis Report", active: false },
     ],
@@ -51,6 +50,13 @@ const navigationItems = [
       { id: "dashboard-value-chain", name: "Customer Value Chain", active: false },
       { id: "dashboard-ai-navigator", name: "AI Solutions Navigator", active: false },
     ],
+  },
+  {
+    id: "solution-explorer",
+    name: "Solution Explorer",
+    icon: BarChart3,
+    active: false,
+    subItems: [],
   },
   {
     id: "roadmap",

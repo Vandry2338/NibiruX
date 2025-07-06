@@ -1,0 +1,16 @@
+<svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Infosys Consulting Logo -->
+  <g>
+    <!-- Infosys text -->
+    <text x="10" y="18" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#007CC2">INFOSYS</text>
+    
+    <!-- Consulting text -->
+    <text x="10" y="32" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="600" fill="#2A9D8F">CONSULTING</text>
+    
+    <!-- Stylized accent line -->
+    <rect x="8" y="22" width="80" height="2" fill="#E48400" opacity="0.8"/>
+    
+    <!-- Optional: Small accent dot -->
+    <circle cx="95" cy="15" r="3" fill="#007CC2" opacity="0.7"/>
+  </g>
+</svg> 

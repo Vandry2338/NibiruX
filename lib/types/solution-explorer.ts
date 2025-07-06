@@ -1,0 +1,24 @@
+export type SolutionTile = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  industry: string[];
+  valueChainBlock: string[];
+  processModule?: string[];
+  sapProducts: string[];
+  solutionType: string;
+  personas: string[];
+  kpis: string[];
+  painPoints: string[];
+  opportunities: string[];
+  demoVideoUrl?: string;
+  sourceUrls: string[];
+  adoptionStats?: string;
+  status: string;
+  lastUpdated: string;
+  tags: string[];
+  fullTextContent?: string;
+  metadataSummary?: string;
+  roadmap?: string[];
+}; 

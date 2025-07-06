@@ -1,0 +1,22 @@
+{
+  "name": "nibirux-firestore-upload",
+  "version": "1.0.0",
+  "description": "Upload script for SAP use cases to Firestore",
+  "main": "uploadFirestoreSeed.js",
+  "scripts": {
+    "upload": "node uploadFirestoreSeed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "keywords": [
+    "firebase",
+    "firestore",
+    "upload",
+    "sap",
+    "use-cases"
+  ],
+  "author": "NibiruX Team",
+  "license": "MIT"
+} 

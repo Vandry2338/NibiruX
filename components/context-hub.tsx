@@ -151,8 +151,7 @@ export default function ContextHub({ selectedClient, onClientChange }: ContextHu
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          animate="visible"
           className="space-y-20"
         >
           {/* Section Header */}

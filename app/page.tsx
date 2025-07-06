@@ -1,5 +1,11 @@
-import AppLayout from "@/components/app-layout"
+"use client"
+
+import { useRouter } from "next/navigation"
+import HeroSection from "@/components/hero-section"
 
 export default function Home() {
-  return <AppLayout />
+  const router = useRouter();
+  return (
+    <HeroSection onNavigate={() => router.push("/client-hub")}/>
+  );
 }

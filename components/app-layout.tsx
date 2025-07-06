@@ -10,19 +10,21 @@ import ValueDiscoveryDashboard from "@/pages/value-discovery-dashboard"
 import RoadmapPage from "@/pages/roadmap-page"
 import ClientSelectionPage from "@/pages/client-selection-page"
 
-import { IntelligenceSynthesisPage } from "@/pages/intelligence-synthesis-page"
-import { IntelligenceBusinessViewPage } from "@/pages/intelligence-business-view-page"
-import { CompetitiveIntelligencePage } from "@/pages/competitive-intelligence-page"
-import { MarketTrendsPage } from "@/pages/market-trends-page"
-import { RegulatoryRequirementsPage } from "@/pages/regulatory-requirements-page"
-import { StrategicFocusAreasPage } from "@/pages/strategic-focus-areas-page"
+import IntelligenceSynthesisPage from "@/pages/intelligence-synthesis-page"
+import IntelligenceBusinessViewPage from "@/pages/intelligence-business-view-page"
+import CompetitiveIntelligencePage from "@/pages/competitive-intelligence-page"
+import MarketTrendsPage from "@/pages/market-trends-page"
+import RegulatoryRequirementsPage from "@/pages/regulatory-requirements-page"
+import StrategicFocusAreasPage from "@/pages/strategic-focus-areas-page"
 import { InteractiveDiscoveryCanvasPage } from "@/pages/interactive-discovery-canvas-page"
 import { PainPointCanvasPage } from "@/pages/pain-point-canvas-page"
 import { PainPointSummaryPage } from "@/pages/pain-point-summary-page"
+import BusinessChallengeAssessmentPage from "@/pages/business-challenge-assessment-page"
 
 import AIUseCaseExplorer from "@/pages/ai-use-case-explorer"
 import AIDeepDiveView from "@/pages/ai-deep-dive-view"
 import AIVendorComparison from "@/pages/ai-vendor-comparison"
+import SolutionExplorerPage from "../pages/solution-explorer"
 
 const AppLayout = () => {
   const [currentPage, setCurrentPage] = useState("client-hub")
@@ -61,7 +63,7 @@ const AppLayout = () => {
         return <InteractiveDiscoveryCanvasPage />
 
       case "pain-point-canvas":
-        return <PainPointCanvasPage onNavigate={setCurrentPage} />
+        return <BusinessChallengeAssessmentPage />
 
       case "pain-point-summary":
         return <PainPointSummaryPage onNavigate={setCurrentPage} />
@@ -117,6 +119,10 @@ const AppLayout = () => {
             onBack={() => setCurrentPage("ai-deep-dive-view")}
           />
         )
+
+      /* -------- Solution Explorer -------- */
+      case "solution-explorer":
+        return <SolutionExplorerPage />
 
       /* -------- Fallback -------- */
       default:
