@@ -44,7 +44,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             <motion.div variants={fadeInUp} className="pt-4">
               <Button
                 size="lg"
-                onClick={() => onNavigate?.("client-selection")}
+                onClick={() => onNavigate?.("client-hub")}
                 className="px-8 py-4 bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary-dark))] text-white font-semibold text-lg rounded-full font-sans shadow-2xl infosys-shadow transition-all duration-300 transform-gpu hover:scale-105 hover:shadow-[0_20px_40px_rgba(0,124,194,0.4)] border-0"
               >
                 Begin Discovery

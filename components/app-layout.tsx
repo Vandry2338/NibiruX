@@ -75,14 +75,8 @@ const AppLayout = () => {
 
       /* -------- Value Discovery Dashboard -------- */
       case "dashboard":
-      case "dashboard-executive":
-        return <ValueDiscoveryDashboard activeSection="executive" />
-
       case "dashboard-value-chain":
         return <ValueDiscoveryDashboard activeSection="value-chain" />
-
-      case "dashboard-ai-navigator":
-        return <ValueDiscoveryDashboard activeSection="ai-navigator" />
 
       /* -------- Roadmap -------- */
       case "roadmap":

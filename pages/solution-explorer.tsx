@@ -6,9 +6,10 @@ import { AskAgentModal } from '../components/AskAgentModal';
 import { SolutionFilterBar } from '../components/solution-filter-bar';
 import { mockSolutions } from '../lib/mock/solution-explorer-data';
 import { SolutionTile as SolutionTileType } from '../lib/types/solution-explorer';
-import { Search, Star, TrendingUp, PlayCircle, CheckCircle, Layers, Building2 } from 'lucide-react';
+import { Search, Star, TrendingUp, PlayCircle, CheckCircle, Layers, Building2, Sparkles, Target, Zap } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useSAPUseCases } from '../hooks/useSAPUseCases';
+import { motion } from 'framer-motion';
 
 // Import Value Chain components
 import { ValueChainBlock } from '../components/value-chain-block';
@@ -149,60 +150,120 @@ export default function SolutionExplorerPage() {
   }, [viewMode]);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-inter">
-      {/* Header Section */}
-      <header className="w-full bg-white shadow-sm" style={{ minHeight: 88 }}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[88px] gap-4">
-          {/* Left: Logo + Title */}
-          <div className="flex items-center gap-4 min-w-0">
-            <img src="/infosys-logo.svg" alt="Infosys Consulting Logo" className="h-12 w-auto" />
-            <h1 className="text-3xl font-extrabold font-poppins text-[#101B2D] tracking-tight whitespace-nowrap">Solution Explorer</h1>
-          </div>
-          {/* Right: Ask Agent */}
-          <div className="flex items-center gap-4">
-            <AskAgentButton onClick={() => setAgentOpen(true)} />
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 font-inter">
+      {/* Hero Section */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative overflow-hidden"
+      >
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-900/50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]"></div>
+        
+        {/* Header Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center"
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#E48400] to-[#FFA940] flex items-center justify-center">
+                <Sparkles className="h-6 w-6 text-white" />
+              </div>
+              <h1 className="text-5xl font-extrabold font-poppins text-white tracking-tight">
+                Solution Explorer
+              </h1>
+            </div>
+            <p className="text-xl text-slate-300 font-inter max-w-3xl mx-auto leading-relaxed">
+              Discover SAP use cases and value chain solutions with AI-powered insights and interactive exploration
+            </p>
+            
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex items-center justify-center gap-8 mt-8"
+            >
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#E48400] font-poppins">
+                  {useCases.length}
+                </div>
+                <div className="text-sm text-slate-400 font-inter">SAP Use Cases</div>
+              </div>
+              <div className="w-px h-12 bg-slate-600"></div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#007CC2] font-poppins">
+                  {visibleChains.length}
+                </div>
+                <div className="text-sm text-slate-400 font-inter">Value Chains</div>
+              </div>
+              <div className="w-px h-12 bg-slate-600"></div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#2A9D8F] font-poppins">
+                  {filteredSolutions.length}
+                </div>
+                <div className="text-sm text-slate-400 font-inter">Filtered Results</div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </header>
+      </motion.div>
 
       {/* Filter Bar */}
-      <SolutionFilterBar
-        filters={filters}
-        onFiltersChange={setFilters}
-        availableOptions={availableOptions}
-      />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="sticky top-0 z-20 bg-slate-800/80 backdrop-blur-xl border-b border-slate-700/50"
+      >
+        <SolutionFilterBar
+          filters={filters}
+          onFiltersChange={setFilters}
+          availableOptions={availableOptions}
+        />
+      </motion.div>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8 space-y-12">
+      <main className="max-w-7xl mx-auto px-6 py-12 space-y-16">
         
         {/* Value Chain Explorer Section */}
-        <section>
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
           {/* Value Chain Header */}
-          <div className="mb-8 bg-white rounded-2xl p-6 border border-[#007CC2]/20 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
+          <div className="mb-12 bg-slate-800/50 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 shadow-2xl">
+            <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-2xl font-bold font-poppins text-[#101B2D] mb-2">
+                <h2 className="text-3xl font-bold font-poppins text-white mb-3 flex items-center gap-3">
+                  <Target className="h-8 w-8 text-[#E48400]" />
                   Value Chain Explorer
                 </h2>
-                <p className="text-[#101B2D]/60 font-inter">
-                  Industry & SAP E2E Process Mapping
+                <p className="text-slate-300 font-inter text-lg">
+                  Industry & SAP E2E Process Mapping with Interactive Intelligence
                 </p>
               </div>
               
               {/* View Mode Toggle */}
-              <div className="flex items-center gap-2 bg-[#FAFBFC] rounded-lg p-1 border border-[#007CC2]/20">
+              <div className="flex items-center gap-2 bg-slate-700/50 rounded-xl p-1 border border-slate-600/50">
                 <Button
                   variant={viewMode === 'industry' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setViewMode('industry')}
                   className={cn(
-                    "text-xs font-semibold",
+                    "text-sm font-semibold transition-all duration-200",
                     viewMode === 'industry' 
-                      ? "bg-[#007CC2] text-white" 
-                      : "text-[#101B2D] hover:bg-[#007CC2]/10"
+                      ? "bg-gradient-to-r from-[#007CC2] to-[#2A9D8F] text-white shadow-lg" 
+                      : "text-slate-300 hover:bg-slate-600/50 hover:text-white"
                   )}
                 >
-                  <Building2 className="w-3 h-3 mr-1" />
+                  <Building2 className="w-4 h-4 mr-2" />
                   Industry
                 </Button>
                 <Button
@@ -210,13 +271,13 @@ export default function SolutionExplorerPage() {
                   size="sm"
                   onClick={() => setViewMode('sap')}
                   className={cn(
-                    "text-xs font-semibold",
+                    "text-sm font-semibold transition-all duration-200",
                     viewMode === 'sap' 
-                      ? "bg-[#E48400] text-white" 
-                      : "text-[#101B2D] hover:bg-[#E48400]/10"
+                      ? "bg-gradient-to-r from-[#E48400] to-[#FFA940] text-white shadow-lg" 
+                      : "text-slate-300 hover:bg-slate-600/50 hover:text-white"
                   )}
                 >
-                  <Layers className="w-3 h-3 mr-1" />
+                  <Layers className="w-4 h-4 mr-2" />
                   SAP
                 </Button>
                 <Button
@@ -224,13 +285,13 @@ export default function SolutionExplorerPage() {
                   size="sm"
                   onClick={() => setViewMode('both')}
                   className={cn(
-                    "text-xs font-semibold",
+                    "text-sm font-semibold transition-all duration-200",
                     viewMode === 'both' 
-                      ? "bg-[#2A9D8F] text-white" 
-                      : "text-[#101B2D] hover:bg-[#2A9D8F]/10"
+                      ? "bg-gradient-to-r from-[#2A9D8F] to-[#007CC2] text-white shadow-lg" 
+                      : "text-slate-300 hover:bg-slate-600/50 hover:text-white"
                   )}
                 >
-                  <Layers className="w-3 h-3 mr-1" />
+                  <Zap className="w-4 h-4 mr-2" />
                   Both
                 </Button>
               </div>
@@ -239,16 +300,16 @@ export default function SolutionExplorerPage() {
             {/* Legend */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-4 h-4 rounded bg-gradient-to-br from-[#E48400] to-[#FFA940]"></div>
-                <span className="text-sm text-[#101B2D]">High Heat (90%+)</span>
+                <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-[#E48400] to-[#FFA940] shadow-lg"></div>
+                <span className="text-sm text-slate-300 font-inter">High Heat (90%+)</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-4 h-4 rounded bg-gradient-to-br from-[#007CC2] to-[#2A9D8F]"></div>
-                <span className="text-sm text-[#101B2D]">Medium Heat (70-89%)</span>
+                <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-[#007CC2] to-[#2A9D8F] shadow-lg"></div>
+                <span className="text-sm text-slate-300 font-inter">Medium Heat (70-89%)</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-4 h-4 rounded bg-gradient-to-br from-[#2A9D8F] to-[#007CC2]"></div>
-                <span className="text-sm text-[#101B2D]">Low Heat (50-69%)</span>
+                <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-[#2A9D8F] to-[#007CC2] shadow-lg"></div>
+                <span className="text-sm text-slate-300 font-inter">Low Heat (50-69%)</span>
               </div>
             </div>
           </div>
@@ -256,36 +317,39 @@ export default function SolutionExplorerPage() {
           {/* Value Chains */}
           <div className="space-y-8">
             {visibleChains.map((chain, chainIndex) => (
-              <div
+              <motion.div
                 key={chain.id}
-                className="bg-white rounded-2xl border border-[#007CC2]/20 shadow-sm overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 * chainIndex }}
+                className="bg-slate-800/50 backdrop-blur-xl rounded-3xl border border-slate-700/50 shadow-2xl overflow-hidden"
               >
                 {/* Chain Header */}
                 <div className={cn(
-                  "p-6 border-b border-[#007CC2]/10",
+                  "p-8 border-b border-slate-700/50",
                   chain.type === 'industry' 
-                    ? "bg-gradient-to-r from-[#007CC2]/5 to-[#2A9D8F]/5" 
-                    : "bg-gradient-to-r from-[#E48400]/5 to-[#FFA940]/5"
+                    ? "bg-gradient-to-r from-[#007CC2]/10 to-[#2A9D8F]/10" 
+                    : "bg-gradient-to-r from-[#E48400]/10 to-[#FFA940]/10"
                 )}>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-4">
                       <div className={cn(
-                        "h-10 w-10 rounded-xl flex items-center justify-center",
+                        "h-14 w-14 rounded-2xl flex items-center justify-center shadow-lg",
                         chain.type === 'industry' 
                           ? "bg-gradient-to-br from-[#007CC2] to-[#2A9D8F]" 
                           : "bg-gradient-to-br from-[#E48400] to-[#FFA940]"
                       )}>
                         {chain.type === 'industry' ? (
-                          <Building2 className="h-5 w-5 text-white" />
+                          <Building2 className="h-7 w-7 text-white" />
                         ) : (
-                          <Layers className="h-5 w-5 text-white" />
+                          <Layers className="h-7 w-7 text-white" />
                         )}
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold font-poppins text-[#101B2D]">
+                        <h3 className="text-2xl font-bold font-poppins text-white">
                           {chain.name}
                         </h3>
-                        <p className="text-sm text-[#101B2D]/60">
+                        <p className="text-slate-300 font-inter">
                           {chain.type === 'industry' ? 'Industry Reference Model' : 'SAP E2E Processes'}
                         </p>
                       </div>
@@ -293,10 +357,10 @@ export default function SolutionExplorerPage() {
                     <Badge 
                       variant="secondary" 
                       className={cn(
-                        "text-sm font-semibold",
+                        "text-sm font-semibold px-4 py-2",
                         chain.type === 'industry' 
-                          ? "bg-[#007CC2]/10 text-[#007CC2] border-[#007CC2]/20"
-                          : "bg-[#E48400]/10 text-[#E48400] border-[#E48400]/20"
+                          ? "bg-[#007CC2]/20 text-[#007CC2] border-[#007CC2]/30"
+                          : "bg-[#E48400]/20 text-[#E48400] border-[#E48400]/30"
                       )}
                     >
                       {chain.blocks.length} Process Blocks
@@ -305,11 +369,14 @@ export default function SolutionExplorerPage() {
                 </div>
 
                 {/* Chain Blocks */}
-                <div className="p-6">
+                <div className="p-8">
                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                     {chain.blocks.map((block, blockIndex) => (
-                      <div
+                      <motion.div
                         key={block.id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: 0.1 * blockIndex }}
                         onMouseEnter={() => setHoveredBlock(block.id)}
                         onMouseLeave={() => setHoveredBlock(null)}
                       >
@@ -321,33 +388,38 @@ export default function SolutionExplorerPage() {
                           isHighlighted={isBlockHighlighted(block.id, chain.type)}
                           mappedBlocks={getMappedBlocks(block.id, chain.type)}
                         />
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Use Cases/Solutions Section */}
-        <section>
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold font-poppins text-[#101B2D] mb-2">
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+        >
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold font-poppins text-white mb-4 flex items-center gap-3">
+              <Sparkles className="h-8 w-8 text-[#E48400]" />
               SAP Use Cases & Solutions
             </h2>
             {loading && (
-              <p className="text-[#101B2D]/60 font-inter">
+              <p className="text-slate-300 font-inter text-lg">
                 Loading SAP use cases from Firestore...
               </p>
             )}
             {error && (
-              <p className="text-red-500 font-inter">
+              <p className="text-red-400 font-inter text-lg">
                 Error loading data: {error}
               </p>
             )}
             {!loading && !error && (
-              <p className="text-[#101B2D]/60 font-inter">
+              <p className="text-slate-300 font-inter text-lg">
                 {filteredSolutions.length} SAP use cases found
               </p>
             )}
@@ -356,23 +428,32 @@ export default function SolutionExplorerPage() {
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-white border border-gray-200 rounded-xl p-6 animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-4"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-2"></div>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 * i }}
+                  className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 animate-pulse"
+                >
+                  <div className="h-4 bg-slate-700 rounded mb-4"></div>
+                  <div className="h-6 bg-slate-700 rounded mb-2"></div>
+                  <div className="h-4 bg-slate-700 rounded mb-4"></div>
+                  <div className="h-4 bg-slate-700 rounded mb-2"></div>
+                </motion.div>
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredSolutions.map((useCase) => (
-                <div
+              {filteredSolutions.map((useCase, index) => (
+                <motion.div
                   key={useCase.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 * index }}
                   className={cn(
-                    'group bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-200 p-6 flex flex-col',
-                    'cursor-pointer',
-                    'relative'
+                    'group bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-6 flex flex-col',
+                    'cursor-pointer hover:scale-[1.02] hover:border-slate-600/50',
+                    'relative overflow-hidden'
                   )}
                   tabIndex={0}
                   role="button"
@@ -380,43 +461,57 @@ export default function SolutionExplorerPage() {
                   onClick={() => setSelectedSolution(useCase as any)}
                   onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setSelectedSolution(useCase as any); }}
                 >
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#E48400]/5 to-[#007CC2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
                   {/* Card Header: Industry + Category Tags */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-4 relative z-10">
                     <div className="flex flex-wrap gap-2">
                       {useCase.industry && (
-                        <span className="bg-[#F0F6FA] text-[#007CC2] font-semibold px-3 py-1 rounded-full text-xs font-inter">{useCase.industry}</span>
+                        <span className="bg-[#007CC2]/20 text-[#007CC2] font-semibold px-3 py-1 rounded-full text-xs font-inter border border-[#007CC2]/30">
+                          {useCase.industry}
+                        </span>
                       )}
                       {useCase.category && (
-                        <span className="bg-[#FFF7E6] text-[#E48400] font-semibold px-3 py-1 rounded-full text-xs font-inter">{useCase.category}</span>
+                        <span className="bg-[#E48400]/20 text-[#E48400] font-semibold px-3 py-1 rounded-full text-xs font-inter border border-[#E48400]/30">
+                          {useCase.category}
+                        </span>
                       )}
                       {useCase.implementation_complexity && (
-                        <span className="bg-[#E6F7F4] text-[#2A9D8F] font-semibold px-3 py-1 rounded-full text-xs font-inter">{useCase.implementation_complexity}</span>
+                        <span className="bg-[#2A9D8F]/20 text-[#2A9D8F] font-semibold px-3 py-1 rounded-full text-xs font-inter border border-[#2A9D8F]/30">
+                          {useCase.implementation_complexity}
+                        </span>
                       )}
                     </div>
                     {/* ROI Timeframe Badge */}
                     {useCase.roi_timeframe && (
-                      <span className="bg-[#E48400]/10 text-[#E48400] font-semibold px-3 py-1 rounded-full text-xs font-inter">
+                      <span className="bg-[#E48400]/20 text-[#E48400] font-semibold px-3 py-1 rounded-full text-xs font-inter border border-[#E48400]/30">
                         ROI: {useCase.roi_timeframe}
                       </span>
                     )}
                   </div>
+                  
                   {/* Title & Description */}
-                  <h2 className="text-xl font-bold font-poppins text-[#101B2D] mb-2 leading-tight line-clamp-2">{useCase.name}</h2>
-                  <p className="text-base text-gray-600 font-inter mb-4 leading-relaxed line-clamp-3">{useCase.description}</p>
+                  <h2 className="text-xl font-bold font-poppins text-white mb-3 leading-tight line-clamp-2 relative z-10">
+                    {useCase.name}
+                  </h2>
+                  <p className="text-base text-slate-300 font-inter mb-4 leading-relaxed line-clamp-3 relative z-10">
+                    {useCase.description}
+                  </p>
                   
                   {/* Business Impact Section */}
                   {useCase.business_impact && (
-                    <div className="mb-4">
-                      <div className="text-sm font-bold font-poppins text-[#101B2D] mb-2 flex items-center gap-2">
+                    <div className="mb-4 relative z-10">
+                      <div className="text-sm font-bold font-poppins text-white mb-2 flex items-center gap-2">
                         <TrendingUp className="text-[#2A9D8F]" size={18} /> Business Impact
                       </div>
-                      <p className="text-sm text-gray-700 font-inter">{useCase.business_impact}</p>
+                      <p className="text-sm text-slate-300 font-inter">{useCase.business_impact}</p>
                     </div>
                   )}
                   
                   {/* Companies Started Section */}
                   {useCase.companies_started && (
-                    <div className="flex items-center justify-between bg-gradient-to-r from-[#E6F0FA] via-[#E6F7F4] to-[#F0F6FA] rounded-lg px-4 py-3 mb-4">
+                    <div className="flex items-center justify-between bg-gradient-to-r from-[#007CC2]/10 via-[#2A9D8F]/10 to-[#E48400]/10 rounded-xl px-4 py-3 mb-4 border border-slate-600/30 relative z-10">
                       <div className="text-lg font-bold text-[#007CC2] font-poppins">
                         {useCase.companies_started}
                       </div>
@@ -426,18 +521,18 @@ export default function SolutionExplorerPage() {
                   
                   {/* Customer Example Section */}
                   {useCase.customer_example && (
-                    <div className="mb-4">
-                      <div className="text-sm font-bold font-poppins text-[#101B2D] mb-2 flex items-center gap-2">
+                    <div className="mb-4 relative z-10">
+                      <div className="text-sm font-bold font-poppins text-white mb-2 flex items-center gap-2">
                         <Building2 className="text-[#2A9D8F]" size={18} /> Customer Example
                       </div>
-                      <p className="text-sm text-gray-700 font-inter">{useCase.customer_example}</p>
+                      <p className="text-sm text-slate-300 font-inter">{useCase.customer_example}</p>
                     </div>
                   )}
                   
                   {/* Footer Section */}
-                  <div className="mt-auto pt-4 border-t border-gray-100">
+                  <div className="mt-auto pt-4 border-t border-slate-700/50 relative z-10">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <div className="flex items-center gap-2 text-sm text-slate-400">
                         <span>SAP Use Case</span>
                       </div>
                       {useCase.infosys_relevance && (
@@ -447,11 +542,11 @@ export default function SolutionExplorerPage() {
                       )}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
-        </section>
+        </motion.section>
       </main>
 
       {/* Modals */}

@@ -46,9 +46,7 @@ const navigationItems = [
     icon: BarChart3,
     active: false,
     subItems: [
-      { id: "dashboard-executive", name: "Executive Dashboard", active: false },
       { id: "dashboard-value-chain", name: "Customer Value Chain", active: false },
-      { id: "dashboard-ai-navigator", name: "AI Solutions Navigator", active: false },
     ],
   },
   {
