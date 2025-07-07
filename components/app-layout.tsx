@@ -25,6 +25,8 @@ import AIUseCaseExplorer from "@/pages/ai-use-case-explorer"
 import AIDeepDiveView from "@/pages/ai-deep-dive-view"
 import AIVendorComparison from "@/pages/ai-vendor-comparison"
 import SolutionExplorerPage from "../pages/solution-explorer"
+import AICatalogPage from "../pages/ai-catalog"
+import ReferenceArchitecturesPage from "../pages/reference-architectures"
 
 const AppLayout = () => {
   const [currentPage, setCurrentPage] = useState("client-hub")
@@ -117,6 +119,12 @@ const AppLayout = () => {
       /* -------- Solution Explorer -------- */
       case "solution-explorer":
         return <SolutionExplorerPage />
+      case "ai-catalog":
+        return <AICatalogPage />
+
+      /* -------- Reference Architectures -------- */
+      case "reference-architectures":
+        return <ReferenceArchitecturesPage />
 
       /* -------- Fallback -------- */
       default:

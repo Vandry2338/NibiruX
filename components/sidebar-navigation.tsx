@@ -54,7 +54,10 @@ const navigationItems = [
     name: "Solution Explorer",
     icon: BarChart3,
     active: false,
-    subItems: [],
+    subItems: [
+      { id: "ai-catalog", name: "AI Catalog", active: false },
+      { id: "reference-architectures", name: "Reference Architectures", active: false },
+    ],
   },
   {
     id: "roadmap",
