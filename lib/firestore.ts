@@ -2,13 +2,27 @@
 import { collection, getDocs, doc, getDoc, query, where, orderBy, limit } from 'firebase/firestore';
 import { db } from './firebase';
 
-// Updated interface to match the new schema structure
+// Updated interface to match the actual data structure
 export interface SAPUseCase {
-  useCaseId: string;
+  id: string;
   name: string;
   description: string;
-  recommendedSapAppStoreSolutionsRefs: string[];
-  relatedTopazAgentsRefs: string[];
+  industry: string;
+  category: string;
+  business_impact: string;
+  implementation_complexity: string;
+  roi_timeframe: string;
+  companies_started: number;
+  customer_example: string;
+  discovery_center_mission: boolean;
+  products: string[];
+  demo_url: string;
+  infosys_relevance: string;
+  pain_points: string[];
+  opportunities: string[];
+  partner?: string;
+  recommendedSapAppStoreSolutionsRefs?: string[];
+  relatedTopazAgentsRefs?: string[];
   uploaded_at?: Date;
 }
 
@@ -83,9 +97,23 @@ export async function getAllSAPUseCases(): Promise<SAPUseCase[]> {
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       useCases.push({
-        useCaseId: data.useCaseId || doc.id,
+        id: data.id || doc.id,
         name: data.name || '',
         description: data.description || '',
+        industry: data.industry || '',
+        category: data.category || '',
+        business_impact: data.business_impact || '',
+        implementation_complexity: data.implementation_complexity || '',
+        roi_timeframe: data.roi_timeframe || '',
+        companies_started: data.companies_started || 0,
+        customer_example: data.customer_example || '',
+        discovery_center_mission: data.discovery_center_mission || false,
+        products: data.products || [],
+        demo_url: data.demo_url || '',
+        infosys_relevance: data.infosys_relevance || '',
+        pain_points: data.pain_points || [],
+        opportunities: data.opportunities || [],
+        partner: data.partner,
         recommendedSapAppStoreSolutionsRefs: data.recommendedSapAppStoreSolutionsRefs || [],
         relatedTopazAgentsRefs: data.relatedTopazAgentsRefs || [],
         uploaded_at: data.uploaded_at
@@ -207,9 +235,23 @@ export async function getUseCaseById(id: string): Promise<SAPUseCase | null> {
     if (docSnap.exists()) {
       const data = docSnap.data();
       return {
-        useCaseId: data.useCaseId || docSnap.id,
+        id: data.id || docSnap.id,
         name: data.name || '',
         description: data.description || '',
+        industry: data.industry || '',
+        category: data.category || '',
+        business_impact: data.business_impact || '',
+        implementation_complexity: data.implementation_complexity || '',
+        roi_timeframe: data.roi_timeframe || '',
+        companies_started: data.companies_started || 0,
+        customer_example: data.customer_example || '',
+        discovery_center_mission: data.discovery_center_mission || false,
+        products: data.products || [],
+        demo_url: data.demo_url || '',
+        infosys_relevance: data.infosys_relevance || '',
+        pain_points: data.pain_points || [],
+        opportunities: data.opportunities || [],
+        partner: data.partner,
         recommendedSapAppStoreSolutionsRefs: data.recommendedSapAppStoreSolutionsRefs || [],
         relatedTopazAgentsRefs: data.relatedTopazAgentsRefs || [],
         uploaded_at: data.uploaded_at

@@ -183,16 +183,16 @@ export default function AICatalogPage() {
       {/* Use Cases Grid */}
       <div className="flex-1 w-full px-8 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto">
         {filteredUseCases.map(uc => (
-          <Card key={uc.id} className="bg-slate-800 border-slate-700 hover:border-blue-500 transition-colors">
+          <Card key={uc.id} className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 border-2 border-blue-800 shadow-lg rounded-2xl hover:border-orange-400 transition-colors">
             <div className="p-6">
-              <div className="flex flex-wrap gap-x-2 gap-y-1 mb-2">
-                <Badge variant="secondary">{uc.industry}</Badge>
-                <Badge variant="secondary">{uc.sapValueChain}</Badge>
-                <Badge variant="secondary">{uc.category}</Badge>
-                <Badge variant="secondary">{uc.status}</Badge>
+              <div className="flex flex-wrap gap-x-2 gap-y-1 mb-2 mt-4">
+                {uc.industry && <span className="bg-orange-600 text-white text-xs px-3 py-1 rounded font-semibold tracking-wide mr-1">{uc.industry}</span>}
+                {uc.category && <span className="bg-blue-700 text-white text-xs px-3 py-1 rounded font-semibold tracking-wide mr-1">{uc.category}</span>}
+                {uc.implementation_complexity && <span className="bg-cyan-700 text-white text-xs px-3 py-1 rounded font-semibold tracking-wide mr-1">{uc.implementation_complexity}</span>}
+                {uc.infosys_relevance && <span className="bg-orange-400 text-white text-xs px-3 py-1 rounded font-semibold tracking-wide mr-1">{uc.infosys_relevance}</span>}
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{uc.name || uc.title}</h3>
-              <p className="text-slate-300 text-sm mb-3">{uc.description}</p>
+              <h3 className="text-lg font-bold text-white mb-2 mt-2">{uc.name || uc.title}</h3>
+              <p className="text-slate-200 text-sm mb-3">{uc.description}</p>
               {uc.demo_url && (
                 <a href={uc.demo_url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm">View Demo →</a>
               )}

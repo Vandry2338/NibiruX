@@ -1,107 +1,72 @@
 "use client"
 
 import type React from "react"
-import {
-  Box,
-  Flex,
-  Heading,
-  Spacer,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  IconButton,
-  useDisclosure,
-  Drawer,
-  DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Stack,
-  Link,
-} from "@chakra-ui/react"
-import { HamburgerIcon } from "@chakra-ui/icons"
-import NextLink from "next/link"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Menu } from "lucide-react"
+import Link from "next/link"
 
 const AppHeader: React.FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Box bg="gray.100" py={4} px={6}>
-      <Flex align="center">
-        <Heading size="lg" fontWeight="semibold" color="blue.500">
+    <div className="bg-gray-100 py-4 px-6">
+      <div className="flex items-center">
+        <h1 className="text-lg font-semibold text-blue-500">
           My App
-        </Heading>
-        <Spacer />
+        </h1>
+        <div className="flex-1" />
 
         {/* Desktop Navigation */}
-        <Box display={{ base: "none", md: "block" }}>
-          <Flex align="center">
-            <NextLink href="/" passHref>
-              <Link px={2} py={1} rounded={"md"} _hover={{ textDecoration: "none", bg: "gray.200" }}>
-                Home
-              </Link>
-            </NextLink>
-            <NextLink href="/about" passHref>
-              <Link px={2} py={1} rounded={"md"} _hover={{ textDecoration: "none", bg: "gray.200" }}>
-                About
-              </Link>
-            </NextLink>
-
-            <Menu>
-              <MenuButton as={Button} rightIcon={<HamburgerIcon />} display={{ base: "none", md: "inline-flex" }}>
-                Tools
-              </MenuButton>
-              <MenuList>
-                <NextLink href="/business-challenge-assessment" passHref>
-                  <MenuItem>Business Challenge Assessment</MenuItem>
-                </NextLink>
-                <NextLink href="/challenge-analysis-report" passHref>
-                  <MenuItem>Challenge Analysis Report</MenuItem>
-                </NextLink>
-              </MenuList>
-            </Menu>
-
-            <Button colorScheme="blue" ml={4}>
+        <div className="hidden md:block">
+          <div className="flex items-center space-x-4">
+            <Link href="/" className="px-2 py-1 rounded-md hover:bg-gray-200">
+              Home
+            </Link>
+            <Link href="/about" className="px-2 py-1 rounded-md hover:bg-gray-200">
+              About
+            </Link>
+            <Button variant="outline">
+              Tools
+            </Button>
+            <Button>
               Login
             </Button>
-          </Flex>
-        </Box>
+          </div>
+        </div>
 
         {/* Mobile Navigation */}
-        <IconButton
-          aria-label="Open Menu"
-          display={{ base: "block", md: "none" }}
-          icon={<HamburgerIcon />}
-          onClick={onOpen}
-        />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="block md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Menu className="h-4 w-4" />
+        </Button>
+      </div>
 
-        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerBody>
-              <Stack spacing="24px">
-                <NextLink href="/" passHref>
-                  <Link>Home</Link>
-                </NextLink>
-                <NextLink href="/about" passHref>
-                  <Link>About</Link>
-                </NextLink>
-                <NextLink href="/business-challenge-assessment" passHref>
-                  <Link>Business Challenge Assessment</Link>
-                </NextLink>
-                <NextLink href="/challenge-analysis-report" passHref>
-                  <Link>Challenge Analysis Report</Link>
-                </NextLink>
-                <Button colorScheme="blue">Login</Button>
-              </Stack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </Flex>
-    </Box>
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden mt-4 space-y-2">
+          <Link href="/" className="block px-2 py-1 rounded-md hover:bg-gray-200">
+            Home
+          </Link>
+          <Link href="/about" className="block px-2 py-1 rounded-md hover:bg-gray-200">
+            About
+          </Link>
+          <Link href="/business-challenge-assessment" className="block px-2 py-1 rounded-md hover:bg-gray-200">
+            Business Challenge Assessment
+          </Link>
+          <Link href="/challenge-analysis-report" className="block px-2 py-1 rounded-md hover:bg-gray-200">
+            Challenge Analysis Report
+          </Link>
+          <Button className="w-full mt-2">
+            Login
+          </Button>
+        </div>
+      )}
+    </div>
   )
 }
 

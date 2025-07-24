@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Lightbulb, Target, Users, Zap, Search, Map, Layers, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export function InteractiveDiscoveryCanvasPage() {
+export default function InteractiveDiscoveryCanvasPage() {
   const discoveryAreas = [
     {
       name: "Customer Insights",

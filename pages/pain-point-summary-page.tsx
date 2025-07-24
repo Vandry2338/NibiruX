@@ -49,7 +49,7 @@ ChartJS.register(
   Filler
 );
 
-export function PainPointSummaryPage({ onNavigate }: PainPointSummaryPageProps) {
+export default function PainPointSummaryPage({ onNavigate }: PainPointSummaryPageProps) {
   const summaryMetrics = [
     {
       title: "Total Pain Points",

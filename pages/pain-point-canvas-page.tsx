@@ -8,7 +8,7 @@ interface PainPointCanvasPageProps {
   onNavigate: (page: string) => void;
 }
 
-export function PainPointCanvasPage({ onNavigate }: PainPointCanvasPageProps) {
+export default function PainPointCanvasPage({ onNavigate }: PainPointCanvasPageProps) {
   const painPointCategories = [
     {
       name: "Customer Experience",
