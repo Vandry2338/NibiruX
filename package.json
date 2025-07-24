@@ -6,7 +6,14 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "test": "echo \"No tests specified\" && exit 0",
+    "test:type-check": "tsc --noEmit",
+    "test:lint": "next lint",
+    "test:build": "next build",
+    "clean": "rm -rf .next out",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@chakra-ui/icons": "latest",
@@ -82,6 +89,7 @@
     "@types/react-dom": "^18",
     "eslint": "^9.31.0",
     "postcss": "^8.5",
+    "prettier": "^3.6.2",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
